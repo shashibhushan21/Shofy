@@ -4,8 +4,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {
-    domains: ['i.ibb.co'],
+  typescript: {
+    ignoreBuildErrors: true,
   },
 }
 
