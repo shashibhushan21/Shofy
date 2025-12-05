@@ -1,9 +1,38 @@
 # Shofy Jewelry – Full Stack eCommerce Web Application + Admin Panel
 
-
 ![Shofy Image Banner](https://i.ibb.co/jVzQLfX/sofy-jewelry.png)
 
 Shofy Jewelry is a powerful and modern full stack eCommerce web application built using Next.js, Express.js, MongoDB with Mongoose, Redux Toolkit, RTK Query, Stripe payment method, Bootstrap 5, and Sass. It includes a feature-rich admin panel for easy management and control of your online store.
+
+**Developed and Maintained by [Tech Field Solution](https://techfieldsolution.com)**
+
+## About Tech Field Solution
+
+Tech Field Solution is a leading software development company specializing in creating innovative and scalable web applications. We deliver cutting-edge solutions for businesses worldwide, focusing on:
+
+- 🚀 Full-Stack Web Development
+- 💎 E-commerce Solutions
+- 🎨 UI/UX Design
+- 📱 Mobile App Development
+- ☁️ Cloud Infrastructure
+- 🔒 Secure Payment Integration
+
+### Contact Tech Field Solution
+
+- **Email:** support@techfieldsolution.com
+- **Phone:** +91 6290 218 436
+- **Location:** Tech Avenue, Silicon Valley, CA 94000 (Kolkata)
+- **Website:** [techfieldsolution.com](https://techfieldsolution.com)
+
+### Follow Us
+
+- **Facebook:** [Tech Field Solution](https://www.facebook.com/people/Tech-Field-Solution/61581618428487/)
+- **Twitter/X:** [@techfieldsol](https://x.com/techfieldsol)
+- **LinkedIn:** [Tech Field Solution](https://www.linkedin.com/company/techfieldsolution/)
+- **Instagram:** [@techfieldsolution](https://www.instagram.com/techfieldsolution)
+- **YouTube:** [Tech Field Solution](https://www.youtube.com/@techfieldsolution)
+
+---
 
 ## Features Overview
 
@@ -35,7 +64,7 @@ Shofy Jewelry is a powerful and modern full stack eCommerce web application buil
 - **Redux Toolkit:** Efficiently manage state in your application with Redux Toolkit.
 - **Dynamic Routes:** Create dynamic and user-friendly URLs for enhanced navigation.
 - **Based on Bootstrap 5.x:** Utilize the latest version of Bootstrap for responsive and customizable design elements.
-- **Free Premium Quality Support:** Enjoy premium support for a smooth development experience.
+- **Premium Quality Support by Tech Field Solution:** Enjoy premium support for a smooth development experience.
 - **Logo Slider Integration:** Showcase your brand and products with a logo slider.
 - **Sticky Header:** Improve user navigation with a sticky header that remains visible as users scroll.
 - **Google Fonts:** Access a wide range of fonts from Google Fonts for creative typography.
@@ -64,6 +93,28 @@ Shofy Jewelry is a powerful and modern full stack eCommerce web application buil
 - **Google and Email Password-based Authentication:** Secure user accounts with authentication methods, including Google login and email-based password authentication.
 - **User Profile and Information Update:** Allow users to update their profile information, ensuring accurate and up-to-date data for future interactions.
 - **Powerful Payment Gateway Integration using Stripe:** Securely process payments with Stripe integration, providing a smooth and reliable shopping experience for customers.
+- **Premium Coming Soon Page:** Elegant coming soon page with countdown timer and email subscription for pre-launch engagement.
+
+## Tech Field Solution's Expertise
+
+### Our Development Stack
+- Frontend: Next.js, React.js, TypeScript, Bootstrap 5, Sass
+- Backend: Node.js, Express.js
+- Database: MongoDB, Mongoose
+- State Management: Redux Toolkit, RTK Query
+- Payment: Stripe Integration
+- Authentication: JWT, OAuth (Google)
+- Email: Nodemailer
+
+### Why Choose Tech Field Solution?
+
+✅ **Experienced Team:** Expert developers with years of experience in full-stack development  
+✅ **Quality Assurance:** Rigorous testing and quality control processes  
+✅ **Timely Delivery:** We respect deadlines and deliver projects on time  
+✅ **Scalable Solutions:** Build applications that grow with your business  
+✅ **24/7 Support:** Round-the-clock technical support and maintenance  
+✅ **Modern Technologies:** We use cutting-edge technologies and best practices  
+✅ **Client-Focused:** Your success is our priority  
 
 ## Installation and Usage
 
@@ -72,73 +123,4 @@ To get started with Shofy, follow these steps:
 1. Clone the repository:
 
    ```bash
-   https://github.com/Hamed-Hasan/shofy-Jewelry-ecommerce-client.git
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Configure environment variables.
-
-4. Build the project:
-
-   ```bash
-   npm run build
-   ```
-
-5. Start the server:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Access the application at the specified URL.
-
-## Client Side Live Link
-
-[Shofy Client Side Live Link](https://shofy-jewelry-ecommerce.vercel.app)
-
-## Server Side Live Link
-
-[Shofy Server Side Live Link](https://shofy-backend.vercel.app)
-
-## Client Side Repo
-
-[Shofy Client Side Repo](https://github.com/Hamed-Hasan/shofy-Jewelry-ecommerce-client.git)
-
-## Server Side Repo
-
-[Shofy Server Side Repo](https://github.com/Hamed-Hasan/shofy-Jewelry-ecommerce-backend.git)
-
-## Sources and Credits
-
-- Twitter Bootstrap
-- Swiper Slider
-- Google Fonts
-- Free Font Awesome Icons by Fontawesome
-
-## Thank You for Choosing Shofy!
-
-We hope you find Shofy to be a powerful and effective solution for your eCommerce needs. Should you encounter
-
- any issues or have any questions, please feel free to reach out to our support team at swe.hamedhasan@gmail.com. Happy selling!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- #   S h o f y  
- 
+   git clone https://github.com/shashibhushan21/Shofy.git
