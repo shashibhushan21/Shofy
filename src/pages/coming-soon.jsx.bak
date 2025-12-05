@@ -1,0 +1,552 @@
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '@assets/img/logo/logo.svg';
+
+// Small helper to gracefully fall back between multiple image candidates
+const FallbackImage = ({ sources = [], alt, width, height, className, priority = false, loading = 'lazy' }) => {
+  const [src, setSrc] = useState(sources[0] || '');
+  useEffect(() => {
+    let cancelled = false;
+    const tryLoad = (idx) => {
+      if (typeof window === 'undefined') return;
+      if (!sources || idx >= sources.length) return;
+      const test = new window.Image();
+      test.onload = () => { if (!cancelled) setSrc(sources[idx]); };
+      test.onerror = () => { if (!cancelled) tryLoad(idx + 1); };
+      test.src = sources[idx];
+    };
+    tryLoad(0);
+    return () => { cancelled = true; };
+    // stringify to retrigger only when sources content actually changes
+  }, [JSON.stringify(sources)]);
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      priority={priority}
+      loading={priority ? undefined : loading}
+    />
+  );
+};
+
+const ComingSoon = () => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [error, setError] = useState('');
+
+  // Marketing copy (Option A implemented)
+  const headlineOptions = [
+    'Exquisite Luxury Awaits',
+    'Unveiling a New Era of Jewelry Excellence',
+    'Where Craftsmanship Meets Brilliance',
+  ];
+  const headline = headlineOptions[0];
+  const subHeadline = 'Handcrafted gold and diamond jewelry, curated for connoisseurs.';
+  const paragraph1 =
+    'Launching soon: a rare curation of certified diamonds, luminous gold, and artisan-crafted designs. Each piece is meticulously finished by master craftsmen — made to be cherished, worn and remembered.';
+  const paragraph2 =
+    'Join our circle for early access, private previews, and limited-release privileges tailored to true jewelry connoisseurs.';
+
+  const features = [
+    { icon: 'fa-gem', title: 'Certified Gold & Diamonds', text: 'Internationally authenticated, hallmarked, and graded for assured excellence.' },
+    { icon: 'fa-hand-sparkles', title: 'Handcrafted Artisan Designs', text: 'Heirloom-quality finishes sculpted by master artisans.' },
+    { icon: 'fa-key', title: 'Exclusive Launch Access', text: 'Private previews, limited drops, and insider-only privileges.' },
+    { icon: 'fa-truck-fast', title: 'Secure & Insured Delivery', text: 'Discreet, tracked, and insured global shipping.' },
+  ];
+
+  // Optional countdown (set a launch timestamp in ms to enable)
+  // Example: const LAUNCH_AT = new Date('2025-01-15T10:00:00Z').getTime();
+  const LAUNCH_AT = undefined;
+  const [countdown, setCountdown] = useState('');
+  useEffect(() => {
+    if (!LAUNCH_AT) {
+      setCountdown('⏳ Grand Opening in 12 Days — Stay Tuned');
+      return;
+    }
+    const tick = () => {
+      const diff = LAUNCH_AT - Date.now();
+      if (diff <= 0) {
+        setCountdown('We are live — welcome.');
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      setCountdown(`⏳ Grand Opening in ${d}d ${h}h ${m}m — Stay Tuned`);
+    };
+    tick();
+    const id = typeof window !== 'undefined' ? window.setInterval(tick, 60000) : undefined;
+    return () => { if (id) window.clearInterval(id); };
+  }, [LAUNCH_AT]);
+
+  // Image candidates from public/assets/img with graceful fallbacks (corrected)
+  const heroImg = [
+    '/assets/img/teaser/hero-teaser.jpg',
+    '/assets/img/product/collection-1.jpg',
+    '/assets/img/product/collection-2.jpg',
+  ];
+  const ringTeaser = [
+    '/assets/img/teaser/diamond-ring-silhouette.jpg',
+    '/assets/img/teaser/diamond-ring-silhouette.png',
+    '/assets/img/product/collection-1.jpg',
+  ];
+  const goldTeaser = [
+    '/assets/img/teaser/gold-necklace-silhouette.jpg',
+    '/assets/img/product/collection-2.jpg',
+  ];
+  const gemTeaser = [
+    '/assets/img/teaser/gemstone-earrings.jpg',
+    '/assets/img/product/collection-2.jpg',
+  ];
+  const collection1 = ['/assets/img/product/collection-1.jpg'];
+  const collection2 = ['/assets/img/product/collection-2.jpg'];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccessMsg('');
+    if (!name?.trim() || !email?.trim()) {
+      setError('Please enter your full name and a valid email.');
+      return;
+    }
+    setSubmitted(true);
+    try {
+      await fetch('/api/early-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, preferences: message }),
+      });
+      setSuccessMsg("Thank you — you're on the list. We’ll be in touch soon.");
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (err) {
+      setError('Something went wrong. Please try again later.');
+    } finally {
+      setSubmitted(false);
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Exquisite Luxury Awaits — Shofy Jewelry</title>
+        <meta
+          name="description"
+          content="Launching soon: certified diamonds, luminous gold, and artisan-crafted jewelry. Join early access for private previews and limited releases."
+        />
+        <meta property="og:title" content="Exquisite Luxury Awaits — Shofy Jewelry" />
+        <meta property="og:description" content="Premium diamonds, gold, and handcrafted designs — coming soon. Join early access." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/assets/img/teaser/hero-teaser.jpg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+
+      <noscript>
+        Join our list — JavaScript is required to submit the form. Email: contact@techfieldsolution.com
+      </noscript>
+
+      <div className="coming-soon-area" role="main" aria-label="Coming soon page">
+        {/* Header (logo + back to home) */}
+        <header className="cs-header">
+          <div className="cs-header-inner">
+            <Link href="/" className="brand" aria-label="Go to homepage">
+              <Image src={logo} alt="Shofy logo" width={120} height={40} />
+            </Link>
+            <Link href="/" className="back-home-btn header-btn">
+              <i className="fa-solid fa-arrow-left"></i>
+              Back to Home
+            </Link>
+          </div>
+        </header>
+
+        {/* Subtle hero background */}
+        <div className="coming-soon-overlay" aria-hidden="true"></div>
+        <div className="golden-particles" aria-hidden="true"></div>
+
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-xl-9 col-lg-11">
+              <div className="coming-soon-content text-center animate-fade-in">
+                {/* Logo */}
+                <div className="coming-soon-logo mb-40 animate-scale-in">
+                  <Image src={logo} alt="logo" width={180} height={60} />
+                </div>
+
+                {/* REMOVE duplicate Back to Home Button (moved to header) */}
+                {/*
+                <div className="mb-40 animate-fade-in-delay-1">
+                  <Link href="/" className="back-home-btn">
+                    <i className="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                  </Link>
+                </div>
+                */}
+
+                {/* Hero image (decorative) */}
+                <div className="hero-img mb-30 animate-fade-in-delay-1" aria-hidden="true">
+                  <FallbackImage
+                    sources={heroImg}
+                    alt=""
+                    width={1200}
+                    height={540}
+                    className="hero-image-el"
+                    priority
+                  />
+                </div>
+
+                {/* Main Heading */}
+                <h1 className="coming-soon-title mb-10 animate-fade-in-delay-1">
+                  <span className="golden-text">{headline}</span>
+                </h1>
+
+                {/* Sub-headline */}
+                <p className="coming-soon-subtitle mb-10 animate-fade-in-delay-2">{subHeadline}</p>
+
+                {/* Description */}
+                <p className="coming-soon-subtitle mb-10 animate-fade-in-delay-2">{paragraph1}</p>
+                <p className="coming-soon-subtitle mb-35 animate-fade-in-delay-2">{paragraph2}</p>
+
+                {/* Optional Countdown */}
+                <div className="countdown-text mb-35 animate-fade-in-delay-2" aria-label="Countdown">
+                  {countdown}
+                </div>
+
+                {/* Features Grid */}
+                <div className="coming-soon-features mb-50 animate-fade-in-delay-3" role="list">
+                  <div className="row g-4">
+                    {features.map((f, idx) => (
+                      <div className="col-md-6 col-lg-3" key={idx}>
+                        <div className="feature-box" role="listitem">
+                          <div className="feature-icon mb-16" aria-hidden="true">
+                            <i className={`fa-solid ${f.icon}`}></i>
+                          </div>
+                          <h4>{f.title}</h4>
+                          <p>{f.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Teaser Products (blurred silhouettes) */}
+                <div className="teaser-products mb-40 animate-fade-in-delay-3" aria-label="Teaser products">
+                  <div className="row g-4 justify-content-center">
+                    <div className="col-sm-6 col-md-4">
+                      <div className="teaser-card">
+                        <FallbackImage
+                          sources={ringTeaser}
+                          alt="Teaser: diamond ring silhouette"
+                          width={480}
+                          height={640}
+                          className="teaser-img"
+                        />
+                        <div className="teaser-caption">Brilliance, Perfected</div>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-md-4">
+                      <div className="teaser-card">
+                        <FallbackImage
+                          sources={goldTeaser}
+                          alt="Teaser: gold necklace silhouette"
+                          width={480}
+                          height={640}
+                          className="teaser-img"
+                        />
+                        <div className="teaser-caption">Gold with a Soul</div>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-md-4">
+                      <div className="teaser-card">
+                        <FallbackImage
+                          sources={gemTeaser}
+                          alt="Teaser: gemstone earrings"
+                          width={480}
+                          height={640}
+                          className="teaser-img"
+                        />
+                        <div className="teaser-caption">Color. Character. Couture.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Collection Preview (optional) */}
+                <div className="collection-preview mb-60 animate-fade-in-delay-3" aria-label="Collection preview">
+                  <div className="row g-4 justify-content-center">
+                    <div className="col-sm-6 col-md-5">
+                      <div className="collection-card">
+                        <FallbackImage
+                          sources={collection1}
+                          alt="Preview: Signature collection I"
+                          width={560}
+                          height={480}
+                          className="collection-img"
+                        />
+                        <div className="collection-caption">Signature Collection I</div>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-md-5">
+                      <div className="collection-card">
+                        <FallbackImage
+                          sources={collection2}
+                          alt="Preview: Signature collection II"
+                          width={560}
+                          height={480}
+                          className="collection-img"
+                        />
+                        <div className="collection-caption">Signature Collection II</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contact / Early Access Form */}
+                <div className="coming-soon-form animate-fade-in-delay-4" role="form" aria-label="Early access form">
+                  <h3 className="mb-10">
+                    Join Early Access <span className="golden-text-dark">Be First to Know</span>
+                  </h3>
+                  <p className="form-sub mb-20">Enter your details to receive exclusive launch privileges.</p>
+
+                  <form onSubmit={handleSubmit} noValidate>
+                    <div className="row g-3">
+                      <div className="col-md-6">
+                        <label className="sr-only" htmlFor="fullName">Full Name</label>
+                        <input
+                          id="fullName"
+                          type="text"
+                          className="form-control"
+                          placeholder="Your Full Name"
+                          aria-label="Full Name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <label className="sr-only" htmlFor="emailAddress">Email</label>
+                        <input
+                          id="emailAddress"
+                          type="email"
+                          className="form-control"
+                          placeholder="Email for Early Access"
+                          aria-label="Email Address"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className="col-12">
+                        <label className="sr-only" htmlFor="preferences">Preferences</label>
+                        <textarea
+                          id="preferences"
+                          className="form-control"
+                          rows="4"
+                          placeholder="Preferences (ring size, metal, stone)..."
+                          aria-label="Preferences"
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                        ></textarea>
+                      </div>
+                      {error && (
+                        <div className="col-12">
+                          <div className="form-error" role="alert">{error}</div>
+                        </div>
+                      )}
+                      {successMsg && (
+                        <div className="col-12">
+                          <div className="form-success" role="status">{successMsg}</div>
+                        </div>
+                      )}
+                      <div className="col-12 d-flex gap-2 flex-wrap justify-content-center">
+                        <button
+                          type="submit"
+                          className="tp-btn tp-btn-border"
+                          disabled={submitted}
+                          aria-disabled={submitted}
+                        >
+                          {submitted ? "Thank you — we'll contact you soon" : 'Notify Me'}
+                        </button>
+                        <button
+                          type="button"
+                          className="tp-btn tp-btn-outline"
+                          aria-label="Join Early Access"
+                          onClick={() => document.getElementById('emailAddress')?.focus()}
+                        >
+                          Join Early Access
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                {/* REMOVE in-body social/contact/credit (moved to footer) */}
+                {/*
+                <div className="coming-soon-social mt-50 animate-fade-in-delay-5">...</div>
+                <div className="coming-soon-contact mt-40 animate-fade-in-delay-6">...</div>
+                <div className="developer-credit mt-50 animate-fade-in-delay-6">...</div>
+                */}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer (social, contact, credit) */}
+        <footer className="cs-footer animate-fade-in-delay-5" role="contentinfo">
+          <div className="container">
+            <div className="footer-inner text-center">
+              <h5 className="mb-20">Follow Us</h5>
+              <div className="social-links">
+                <a href="#" className="social-icon" aria-label="Facebook"><i className="fa-brands fa-facebook-f"></i></a>
+                <a href="#" className="social-icon" aria-label="Instagram"><i className="fa-brands fa-instagram"></i></a>
+                <a href="#" className="social-icon" aria-label="Twitter"><i className="fa-brands fa-twitter"></i></a>
+                <a href="#" className="social-icon" aria-label="Pinterest"><i className="fa-brands fa-pinterest"></i></a>
+              </div>
+
+              <div className="coming-soon-contact mt-30">
+                <p className="mb-10">
+                  <i className="fa-solid fa-phone mr-10"></i>
+                  <a href="tel:966595035008">+(966) 595 035 008</a>
+                </p>
+                <p>
+                  <i className="fa-solid fa-envelope mr-10"></i>
+                  <a href="mailto:info@techfieldsolution.com">info@techfieldsolution.com</a>
+                </p>
+              </div>
+
+              <div className="developer-credit mt-30">
+                <p className="mb-0">
+                  <i className="fa-solid fa-code mr-10"></i>
+                  Crafted with Excellence by <span className="golden-text-inline">Tech Field Solution</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        {/* Animated Background Elements (kept minimal) */}
+        <div className="coming-soon-shapes">
+          <div className="shape shape-1" />
+          <div className="shape shape-2" />
+          <div className="shape shape-3" />
+          <div className="shape shape-4" />
+        </div>
+      </div>
+
+      <style jsx>{`
+        /* Palette */
+        /* Deep Navy: #07112a; Midnight Blue: #091229; Gold: #D4AE3A; Deep Gold: #B8862E; Soft Cream: #FFF9F2; Muted Gray: #BDBDBD; White: #FFFFFF */
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: translateY(0);} }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.98);} to { opacity: 1; transform: scale(1);} }
+        @keyframes floatSlow { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+        @keyframes particles { 0%,100% { opacity: .3; transform: translateY(0);} 50% { opacity: .6; transform: translateY(-12px);} }
+        @keyframes shimmer { 0% { background-position: -1000px 0;} 100% { background-position: 1000px 0;} }
+
+        .animate-fade-in { animation: fadeIn .8s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn .6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards; opacity: 0; }
+        .animate-fade-in-delay-1 { animation: fadeIn .8s ease-out .2s forwards; opacity: 0; }
+        .animate-fade-in-delay-2 { animation: fadeIn .8s ease-out .4s forwards; opacity: 0; }
+        .animate-fade-in-delay-3 { animation: fadeIn .8s ease-out .6s forwards; opacity: 0; }
+        .animate-fade-in-delay-4 { animation: fadeIn .8s ease-out .8s forwards; opacity: 0; }
+
+        .coming-soon-area {
+          min-height: 100vh;
+          background: radial-gradient(1000px 600px at 20% 10%, rgba(212, 174, 58, 0.08), transparent 60%),
+                      radial-gradient(800px 500px at 85% 20%, rgba(184, 134, 46, 0.06), transparent 60%),
+                      linear-gradient(135deg, #07112a 0%, #091229 100%);
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          /* ensure header top, footer bottom, content fills center */
+          flex-direction: column;
+          align-items: stretch;
+          padding: 0; /* move vertical padding to inner container */
+          font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+          color: #FFFFFF;
+        }
+        .coming-soon-area > .container {
+          padding: 72px 0;
+          flex: 1 1 auto;
+        }
+
+        /* Header */
+        .cs-header {
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          backdrop-filter: blur(6px);
+          width: 100%;
+          background: linear-gradient(180deg, rgba(9,18,41,0.65), rgba(9,18,41,0.35));
+          border-bottom: 1px solid rgba(212,174,58,0.18);
+        }
+        .cs-header-inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 20px;
+        }
+        .header-btn {
+          padding: 10px 22px;
+          border-radius: 32px;
+          white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        /* Footer */
+        .cs-footer {
+          border-top: 1px solid rgba(212,174,58,0.25);
+          padding: 40px 0 60px;
+          width: 100%;
+          background: linear-gradient(180deg, rgba(9,18,41,0.25), rgba(9,18,41,0.5));
+        }
+        .cs-footer h5 {
+          color: #D4AE3A;
+          font-weight: 600;
+        }
+        .footer-inner .social-links { display: flex; gap: 12px; justify-content: center; }
+
+        /* Image ratios to avoid stretching */
+        .hero-image-el { aspect-ratio: 16 / 7; object-fit: cover; width: 100%; height: auto; filter: brightness(.8) contrast(1.05); border-radius: 18px; }
+        .teaser-products .teaser-img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; height: auto; filter: blur(2px) brightness(0.85); transform: scale(1.02); transition: all .35s ease; }
+        .collection-preview .collection-img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; height: auto; display: block; }
+
+        /* Keep existing back-home button and shapes; adjust hover colors */
+        .back-home-btn { border-color: rgba(212,174,58,0.5); color: #D4AE3A; }
+        .back-home-btn:hover { background: linear-gradient(135deg, #D4AE3A 0%, #B8862E 100%); color: #07112a; }
+
+        @media (max-width: 768px) {
+          .cs-header-inner { padding: 10px 14px; }
+          .cs-footer { padding: 30px 0 48px; }
+          .header-btn { padding: 8px 18px; }
+        }
+        /* ...existing code... utility classes, form styles, features, etc. */
+      `}</style>
+    </>
+  );
+  
+};
+
+export default ComingSoon;
