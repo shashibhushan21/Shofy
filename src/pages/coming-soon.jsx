@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
-import Link from "next/link";
-import Image from "next/image";
-import Link from "next/link";
-import Image from "next/image";
+
+
 import Footer from "@/layout/footers/footer";
 import emailjs from '@emailjs/browser';
 
@@ -153,9 +151,9 @@ const ComingSoon = () => {
                     backdropFilter: "blur(10px)",
                     boxShadow: "0 0 30px rgba(212, 175, 55, 0.3)"
                   }}>
-                    <Link href="/">
-                      <Image src="/assets/img/logo/logo.png" alt="Shofy Logo" width={180} height={60} style={{ maxWidth: "180px" }} />
-                    </Link>
+                    <a href="/">
+                      <img src="/assets/img/logo/logo.png" alt="Shofy Logo" style={{ maxWidth: "180px" }} />
+                    </a>
                   </div>
                 </div>
 
