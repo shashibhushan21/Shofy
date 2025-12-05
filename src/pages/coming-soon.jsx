@@ -152,7 +152,7 @@ const ComingSoon = () => {
                     boxShadow: "0 0 30px rgba(212, 175, 55, 0.3)"
                   }}>
                     <a href="/">
-                      <img src="/assets/img/logo/logo.png" alt="Shofy Logo" style={{ maxWidth: "180px" }} />
+                      <img src="/assets/img/logo/logo.svg" alt="Shofy Logo" style={{ maxWidth: "180px", filter: "brightness(0) invert(1)" }} />
                     </a>
                   </div>
                 </div>
@@ -480,11 +480,12 @@ const ComingSoon = () => {
                   </div>
                 </div>
 
-                <div className="row justify-content-center g-4" style={{ animation: "fadeInUp 1s ease-out 1.1s both" }}>
+                <div className="row justify-content-center" style={{ gap: "20px" }} style={{ animation: "fadeInUp 1s ease-out 1.1s both" }}>
                   
                   <div className="col-md-6">
                     <div style={{
                       background: "rgba(255, 255, 255, 0.05)",
+                      margin: "10px",
                       padding: "35px 30px",
                       borderRadius: "20px",
                       backdropFilter: "blur(10px)",
@@ -548,6 +549,7 @@ const ComingSoon = () => {
                   <div className="col-md-6">
                     <div style={{
                       background: "rgba(255, 255, 255, 0.05)",
+                      margin: "10px",
                       padding: "35px 30px",
                       borderRadius: "20px",
                       backdropFilter: "blur(10px)",
