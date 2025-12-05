@@ -14,7 +14,7 @@ const social_data = [
   },
   {
     id:3,
-    link:'nkedin.com/in/hamed-hasan/',
+    link: "https://www.linkedin.com/company/techfieldsolution/",
     icon:'fa-brands fa-linkedin-in',
     title:'Linkedin'
   },
