@@ -50,12 +50,10 @@ const ComingSoon = () => {
     setErrorMessage("");
 
     try {
-      // EmailJS configuration (you'll get these after signing up at emailjs.com)
       const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_xxxxxxx';
       const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_xxxxxxx';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key';
 
-      // Prepare email parameters
       const templateParams = {
         to_email: 'support@techfieldsolution.com, info@techfieldsolution.com',
         from_name: formData.name,
@@ -65,7 +63,6 @@ const ComingSoon = () => {
         reply_to: formData.email,
       };
 
-      // Send email using EmailJS
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
       setIsSubmitted(true);
@@ -98,7 +95,6 @@ const ComingSoon = () => {
           overflow: "hidden"
         }}
       >
-        {/* Animated Diamond Pattern Background */}
         <div style={{
           position: "absolute",
           top: 0,
@@ -112,7 +108,6 @@ const ComingSoon = () => {
           animation: "shimmer 20s linear infinite"
         }}></div>
 
-        {/* Floating Jewelry Elements */}
         <div style={{
           position: "absolute",
           top: "15%",
@@ -120,7 +115,7 @@ const ComingSoon = () => {
           fontSize: "60px",
           opacity: "0.1",
           animation: "float 6s ease-in-out infinite"
-        }}>💎</div>
+        }}></div>
         <div style={{
           position: "absolute",
           top: "70%",
@@ -129,7 +124,7 @@ const ComingSoon = () => {
           opacity: "0.1",
           animation: "float 8s ease-in-out infinite",
           animationDelay: "2s"
-        }}>💍</div>
+        }}></div>
         <div style={{
           position: "absolute",
           bottom: "20%",
@@ -138,14 +133,13 @@ const ComingSoon = () => {
           opacity: "0.1",
           animation: "float 7s ease-in-out infinite",
           animationDelay: "1s"
-        }}>👑</div>
+        }}></div>
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="row justify-content-center">
             <div className="col-xl-10 col-lg-11">
               <div className="text-center">
                 
-                {/* Logo with Glow */}
                 <div className="mb-4" style={{ animation: "fadeInDown 1s ease-out" }}>
                   <div style={{
                     display: "inline-block",
@@ -153,7 +147,6 @@ const ComingSoon = () => {
                     background: "rgba(212, 175, 55, 0.1)",
                     borderRadius: "20px",
                     backdropFilter: "blur(10px)",
-                    border: "2px solid rgba(212, 175, 55, 0.3)",
                     boxShadow: "0 0 30px rgba(212, 175, 55, 0.3)"
                   }}>
                     <a href="/">
@@ -162,7 +155,6 @@ const ComingSoon = () => {
                   </div>
                 </div>
 
-                {/* Premium Badge with Diamond Icon */}
                 <div className="mb-4" style={{ animation: "fadeIn 1.5s ease-out" }}>
                   <span style={{
                     display: "inline-flex",
@@ -179,13 +171,12 @@ const ComingSoon = () => {
                     boxShadow: "0 8px 30px rgba(212, 175, 55, 0.5)",
                     animation: "pulse 2s ease-in-out infinite"
                   }}>
-                    <span style={{ fontSize: "20px" }}>💎</span>
+                    <span style={{ fontSize: "20px" }}></span>
                     Exclusive Jewelry Launch
-                    <span style={{ fontSize: "20px" }}>💎</span>
+                    <span style={{ fontSize: "20px" }}></span>
                   </span>
                 </div>
 
-                {/* Main Headline with Jewelry Theme */}
                 <div className="mb-4" style={{ animation: "fadeInUp 1s ease-out 0.3s both" }}>
                   <h1 style={{ 
                     fontSize: "clamp(36px, 5vw, 68px)", 
@@ -222,14 +213,13 @@ const ComingSoon = () => {
                   </p>
                 </div>
 
-                {/* Jewelry Features Icons */}
                 <div className="mb-5" style={{ animation: "fadeInUp 1s ease-out 0.5s both" }}>
                   <div className="row justify-content-center g-4 mb-5">
                     {[
-                      { icon: "��", text: "Premium Diamonds" },
-                      { icon: "👑", text: "Royal Designs" },
-                      { icon: "✨", text: "Handcrafted" },
-                      { icon: "🎁", text: "Gift Ready" }
+                      { icon: "", text: "Premium Diamonds" },
+                      { icon: "", text: "Royal Designs" },
+                      { icon: "", text: "Handcrafted" },
+                      { icon: "", text: "Gift Ready" }
                     ].map((item, index) => (
                       <div key={index} className="col-6 col-md-3">
                         <div style={{
@@ -237,7 +227,6 @@ const ComingSoon = () => {
                           background: "rgba(255, 255, 255, 0.05)",
                           borderRadius: "15px",
                           backdropFilter: "blur(10px)",
-                          border: "1px solid rgba(212, 175, 55, 0.2)",
                           transition: "all 0.3s ease"
                         }}>
                           <div style={{ fontSize: "40px", marginBottom: "10px" }}>{item.icon}</div>
@@ -248,7 +237,6 @@ const ComingSoon = () => {
                   </div>
                 </div>
 
-                {/* Countdown Timer */}
                 <div className="mb-5" style={{ animation: "fadeInUp 1s ease-out 0.7s both" }}>
                   <h3 style={{ 
                     color: "#f4e5a1", 
@@ -271,7 +259,6 @@ const ComingSoon = () => {
                           background: "rgba(255, 255, 255, 0.05)",
                           padding: "35px 20px",
                           borderRadius: "20px",
-                          border: "2px solid rgba(212, 175, 55, 0.3)",
                           backdropFilter: "blur(10px)",
                           boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)"
                         }}>
@@ -302,7 +289,6 @@ const ComingSoon = () => {
                   </div>
                 </div>
 
-                {/* Email/WhatsApp Subscription Form */}
                 <div className="mb-5" style={{ 
                   maxWidth: "700px", 
                   margin: "0 auto 50px",
@@ -312,11 +298,10 @@ const ComingSoon = () => {
                     background: "rgba(255, 255, 255, 0.08)",
                     padding: "50px 40px",
                     borderRadius: "25px",
-                    border: "2px solid rgba(212, 175, 55, 0.3)",
                     backdropFilter: "blur(20px)",
                     boxShadow: "0 20px 60px rgba(0, 0, 0, 0.4)"
                   }}>
-                    <div style={{ fontSize: "50px", marginBottom: "20px" }}>💌</div>
+                    <div style={{ fontSize: "50px", marginBottom: "20px" }}></div>
                     <h4 style={{ 
                       fontSize: "32px", 
                       marginBottom: "15px",
@@ -344,7 +329,7 @@ const ComingSoon = () => {
                           required
                           style={{
                             padding: "18px 25px",
-                            border: "2px solid rgba(212, 175, 55, 0.3)",
+                            border: "none",
                             borderRadius: "12px",
                             fontSize: "15px",
                             background: "rgba(255, 255, 255, 0.1)",
@@ -353,11 +338,11 @@ const ComingSoon = () => {
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.borderColor = "#d4af37";
+                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
                             e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
                           }}
                           onBlur={(e) => {
-                            e.target.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
                             e.target.style.boxShadow = "none";
                           }}
                         />
@@ -369,7 +354,7 @@ const ComingSoon = () => {
                           required
                           style={{
                             padding: "18px 25px",
-                            border: "2px solid rgba(212, 175, 55, 0.3)",
+                            border: "none",
                             borderRadius: "12px",
                             fontSize: "15px",
                             background: "rgba(255, 255, 255, 0.1)",
@@ -378,11 +363,11 @@ const ComingSoon = () => {
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.borderColor = "#d4af37";
+                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
                             e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
                           }}
                           onBlur={(e) => {
-                            e.target.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
                             e.target.style.boxShadow = "none";
                           }}
                         />
@@ -393,7 +378,7 @@ const ComingSoon = () => {
                           placeholder="WhatsApp Number (Optional)"
                           style={{
                             padding: "18px 25px",
-                            border: "2px solid rgba(212, 175, 55, 0.3)",
+                            border: "none",
                             borderRadius: "12px",
                             fontSize: "15px",
                             background: "rgba(255, 255, 255, 0.1)",
@@ -402,11 +387,11 @@ const ComingSoon = () => {
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.borderColor = "#d4af37";
+                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
                             e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
                           }}
                           onBlur={(e) => {
-                            e.target.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
                             e.target.style.boxShadow = "none";
                           }}
                         />
@@ -446,7 +431,6 @@ const ComingSoon = () => {
                           marginTop: "20px",
                           padding: "20px",
                           background: "rgba(76, 175, 80, 0.2)",
-                          border: "2px solid #4caf50",
                           borderRadius: "12px",
                           color: "#a5d6a7",
                           fontSize: "15px",
@@ -456,7 +440,7 @@ const ComingSoon = () => {
                           justifyContent: "center",
                           gap: "10px"
                         }}>
-                          <span style={{ fontSize: "24px" }}>✓</span>
+                          <span style={{ fontSize: "24px" }}></span>
                           Thank you! You're on our exclusive VIP list.
                         </div>
                       )}
@@ -465,7 +449,6 @@ const ComingSoon = () => {
                           marginTop: "20px",
                           padding: "20px",
                           background: "rgba(244, 67, 54, 0.2)",
-                          border: "2px solid #f44336",
                           borderRadius: "12px",
                           color: "#ffcdd2",
                           fontSize: "14px"
@@ -488,14 +471,13 @@ const ComingSoon = () => {
                       color: "#d4af37"
                     }}>
                       Or contact us directly:<br />
-                      📧 support@techfieldsolution.com<br />
-                      📧 info@techfieldsolution.com<br />
-                      📞 +91 6290 218 436
+                       support@techfieldsolution.com<br />
+                       info@techfieldsolution.com<br />
+                       +91 6290 218 436
                     </p>
                   </div>
                 </div>
 
-                {/* Contact & Social Section */}
                 <div className="row justify-content-center g-4" style={{ animation: "fadeInUp 1s ease-out 1.1s both" }}>
                   
                   <div className="col-md-6">
@@ -503,7 +485,6 @@ const ComingSoon = () => {
                       background: "rgba(255, 255, 255, 0.05)",
                       padding: "35px 30px",
                       borderRadius: "20px",
-                      border: "1px solid rgba(212, 175, 55, 0.3)",
                       backdropFilter: "blur(10px)",
                       height: "100%",
                       textAlign: "left"
@@ -517,7 +498,7 @@ const ComingSoon = () => {
                         alignItems: "center",
                         gap: "10px"
                       }}>
-                        <span style={{ fontSize: "28px" }}>📞</span>
+                        <span style={{ fontSize: "28px" }}></span>
                         Contact Us
                       </h5>
                       <div>
@@ -567,7 +548,6 @@ const ComingSoon = () => {
                       background: "rgba(255, 255, 255, 0.05)",
                       padding: "35px 30px",
                       borderRadius: "20px",
-                      border: "1px solid rgba(212, 175, 55, 0.3)",
                       backdropFilter: "blur(10px)",
                       height: "100%",
                       display: "flex",
@@ -585,7 +565,7 @@ const ComingSoon = () => {
                         justifyContent: "center",
                         gap: "10px"
                       }}>
-                        <span style={{ fontSize: "28px" }}>✨</span>
+                        <span style={{ fontSize: "28px" }}></span>
                         Follow Our Journey
                       </h5>
                       <div style={{ display: "flex", justifyContent: "center", gap: "15px", flexWrap: "wrap" }}>
@@ -611,17 +591,14 @@ const ComingSoon = () => {
                               justifyContent: "center",
                               transition: "all 0.3s ease",
                               textDecoration: "none",
-                              border: "2px solid transparent",
                               boxShadow: "0 5px 20px rgba(0, 0, 0, 0.3)"
                             }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.transform = "translateY(-5px) scale(1.1)";
-                              e.currentTarget.style.borderColor = "#d4af37";
                               e.currentTarget.style.boxShadow = "0 10px 30px rgba(212, 175, 55, 0.5)";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.transform = "translateY(0) scale(1)";
-                              e.currentTarget.style.borderColor = "transparent";
                               e.currentTarget.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.3)";
                             }}
                           >
