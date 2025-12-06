@@ -1,4 +1,4 @@
-// Menu Data - Home and Coming Soon Pages
+// Menu Data - Home and Get In Touch Pages
 const menu_data = [
   {
     id: 1,
@@ -10,7 +10,7 @@ const menu_data = [
   {
     id: 2,
     hasDropdown: false,
-    title: "Coming Soon",
+    title: "Get In Touch",
     link: "/coming-soon",
     megaMenu: false,
   }

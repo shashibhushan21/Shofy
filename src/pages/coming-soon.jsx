@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
-
-
 import Footer from "@/layout/footers/footer";
 import emailjs from '@emailjs/browser';
 
@@ -75,7 +73,7 @@ const ComingSoon = () => {
 
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage('Unable to send. Please email us directly at support@techfieldsolution.com');
+      setErrorMessage('Unable to send. Please contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -83,13 +81,13 @@ const ComingSoon = () => {
 
   return (
     <Wrapper>
-      <SEO pageTitle="Coming Soon - Luxury Jewelry Collection" />
+      <SEO pageTitle="Get In Touch - Luxury Jewelry Collection" />
       <HeaderTwo style_2={true} />
       
       <section 
         className="tp-coming-soon-area py-5" 
         style={{ 
-          background: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+          background: "linear-gradient(180deg, #f8f5f2 0%, #fff 30%, #f8f5f2 100%)",
           minHeight: "90vh",
           display: "flex",
           alignItems: "center",
@@ -97,44 +95,46 @@ const ComingSoon = () => {
           overflow: "hidden"
         }}
       >
+        {/* Decorative Pattern Background - Similar to home page */}
         <div style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `
-            repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212, 175, 55, 0.03) 50px, rgba(212, 175, 55, 0.03) 100px),
-            repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(212, 175, 55, 0.03) 50px, rgba(212, 175, 55, 0.03) 100px)
-          `,
-          animation: "shimmer 20s linear infinite"
+          backgroundImage: "radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 40%)",
+          pointerEvents: "none"
         }}></div>
 
+        {/* Floating Jewelry Elements */}
         <div style={{
           position: "absolute",
-          top: "15%",
-          left: "10%",
-          fontSize: "60px",
-          opacity: "0.1",
-          animation: "float 6s ease-in-out infinite"
-        }}></div>
-        <div style={{
-          position: "absolute",
-          top: "70%",
-          right: "15%",
-          fontSize: "50px",
-          opacity: "0.1",
+          top: "10%",
+          left: "5%",
+          fontSize: "80px",
+          opacity: "0.08",
           animation: "float 8s ease-in-out infinite",
-          animationDelay: "2s"
+          color: "#d4af37"
         }}></div>
         <div style={{
           position: "absolute",
-          bottom: "20%",
-          left: "20%",
-          fontSize: "45px",
-          opacity: "0.1",
-          animation: "float 7s ease-in-out infinite",
-          animationDelay: "1s"
+          bottom: "15%",
+          right: "8%",
+          fontSize: "70px",
+          opacity: "0.08",
+          animation: "float 10s ease-in-out infinite",
+          animationDelay: "2s",
+          color: "#d4af37"
+        }}></div>
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          right: "5%",
+          fontSize: "60px",
+          opacity: "0.08",
+          animation: "float 12s ease-in-out infinite",
+          animationDelay: "4s",
+          color: "#d4af37"
         }}></div>
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
@@ -142,114 +142,119 @@ const ComingSoon = () => {
             <div className="col-xl-10 col-lg-11">
               <div className="text-center">
                 
+                {/* Logo */}
                 <div className="mb-4" style={{ animation: "fadeInDown 1s ease-out" }}>
-                  <div style={{
-                    display: "inline-block",
-                    padding: "20px",
-                    background: "rgba(212, 175, 55, 0.1)",
-                    borderRadius: "20px",
-                    backdropFilter: "blur(10px)",
-                    boxShadow: "0 0 30px rgba(212, 175, 55, 0.3)"
-                  }}>
-                    <a href="/">
-                      <img src="/assets/img/logo/logo.svg" alt="Shofy Logo" style={{ maxWidth: "180px", filter: "brightness(0) invert(1)" }} />
-                    </a>
-                  </div>
+                  <a href="/">
+                    <img 
+                      src="/assets/img/logo/logo.svg" 
+                      alt="Shofy Logo" 
+                      style={{ 
+                        maxWidth: "200px",
+                        
+                      }} 
+                    />
+                  </a>
                 </div>
 
-                <div className="mb-4" style={{ animation: "fadeIn 1.5s ease-out" }}>
+                {/* Premium Badge */}
+                <div className="mb-4" style={{ animation: "fadeIn 1.2s ease-out" }}>
                   <span style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "10px",
-                    padding: "12px 35px",
+                    padding: "12px 40px",
                     background: "linear-gradient(135deg, #d4af37 0%, #f4e5a1 100%)",
                     color: "#1a1a2e",
-                    fontSize: "13px",
+                    fontSize: "14px",
                     fontWeight: "700",
                     letterSpacing: "2px",
                     textTransform: "uppercase",
                     borderRadius: "50px",
-                    boxShadow: "0 8px 30px rgba(212, 175, 55, 0.5)",
-                    animation: "pulse 2s ease-in-out infinite"
+                    boxShadow: "none"
                   }}>
-                    <span style={{ fontSize: "20px" }}></span>
-                    Exclusive Jewelry Launch
-                    <span style={{ fontSize: "20px" }}></span>
+                    <span style={{ fontSize: "18px" }}></span>
+                    Exclusive Jewelry Collection
                   </span>
                 </div>
 
-                <div className="mb-4" style={{ animation: "fadeInUp 1s ease-out 0.3s both" }}>
+                {/* Main Headline */}
+                <div className="mb-5" style={{ animation: "fadeInUp 1s ease-out 0.3s both" }}>
                   <h1 style={{ 
-                    fontSize: "clamp(36px, 5vw, 68px)", 
+                    fontSize: "clamp(40px, 6vw, 72px)", 
                     fontWeight: "700", 
-                    marginBottom: "20px",
-                    background: "linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    marginBottom: "25px",
+                    color: "#1a1a2e",
                     lineHeight: "1.2",
-                    fontFamily: "'Playfair Display', serif",
-                    textShadow: "0 0 30px rgba(212, 175, 55, 0.3)"
+                    fontFamily: "'Playfair Display', serif"
                   }}>
-                    Crafting Timeless Elegance
+                    Get In Touch With
+                    <br />
+                    <span style={{ 
+                      background: "linear-gradient(135deg, #d4af37 0%, #c9992e 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text"
+                    }}>Timeless Elegance</span>
                   </h1>
-                  <h2 style={{ 
-                    fontSize: "clamp(20px, 3vw, 32px)", 
-                    color: "#f4e5a1", 
-                    marginBottom: "20px",
-                    fontWeight: "400",
-                    letterSpacing: "1px"
-                  }}>
-                    Where Every Piece Tells a Story
-                  </h2>
                   <p style={{ 
-                    fontSize: "clamp(16px, 2vw, 20px)", 
-                    color: "#b8b8b8", 
+                    fontSize: "clamp(18px, 2.5vw, 24px)", 
+                    color: "#666", 
                     marginBottom: "30px",
-                    fontWeight: "300",
+                    fontWeight: "400",
                     maxWidth: "700px",
                     margin: "0 auto"
                   }}>
-                    Experience the finest collection of handcrafted gold, diamonds & precious gemstones
+                    Experience luxury craftsmanship in gold, diamonds & precious gemstones
                   </p>
                 </div>
 
+                {/* Feature Cards */}
                 <div className="mb-5" style={{ animation: "fadeInUp 1s ease-out 0.5s both" }}>
                   <div className="row justify-content-center g-4 mb-5">
                     {[
-                      { icon: "", text: "Premium Diamonds" },
-                      { icon: "", text: "Royal Designs" },
-                      { icon: "", text: "Handcrafted" },
-                      { icon: "", text: "Gift Ready" }
+                      { icon: "", text: "Premium Diamonds", desc: "Certified Quality" },
+                      { icon: "", text: "Royal Designs", desc: "Exclusive Collection" },
+                      { icon: "", text: "Handcrafted", desc: "Master Artisans" },
+                      { icon: "", text: "Gift Ready", desc: "Luxury Packaging" }
                     ].map((item, index) => (
                       <div key={index} className="col-6 col-md-3">
                         <div style={{
-                          padding: "20px",
-                          background: "rgba(255, 255, 255, 0.05)",
-                          borderRadius: "15px",
-                          backdropFilter: "blur(10px)",
-                          transition: "all 0.3s ease"
+                          padding: "30px 20px",
+                          background: "rgba(255, 255, 255, 0)",
+                          borderRadius: "20px",
+                          boxShadow: "none",
+                          transition: "all 0.3s ease",
+                          cursor: "default"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateY(-8px)";
+                          e.currentTarget.style.boxShadow = "0 15px 40px rgba(212, 175, 55, 0.2)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "0 8px 30px rgba(0, 0, 0, 0.08)";
                         }}>
-                          <div style={{ fontSize: "40px", marginBottom: "10px" }}>{item.icon}</div>
-                          <p style={{ color: "#d4af37", margin: 0, fontSize: "14px", fontWeight: "600" }}>{item.text}</p>
+                          <div style={{ fontSize: "48px", marginBottom: "15px" }}>{item.icon}</div>
+                          <h5 style={{ color: "#1a1a2e", margin: "0 0 8px 0", fontSize: "16px", fontWeight: "700" }}>{item.text}</h5>
+                          <p style={{ color: "#999", margin: 0, fontSize: "13px" }}>{item.desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
+                {/* Countdown Timer */}
                 <div className="mb-5" style={{ animation: "fadeInUp 1s ease-out 0.7s both" }}>
                   <h3 style={{ 
-                    color: "#f4e5a1", 
-                    fontSize: "24px", 
-                    marginBottom: "30px",
-                    fontWeight: "600",
-                    letterSpacing: "2px"
+                    color: "#1a1a2e", 
+                    fontSize: "28px", 
+                    marginBottom: "35px",
+                    fontWeight: "700",
+                    letterSpacing: "1px"
                   }}>
-                    LAUNCHING IN
+                    Collection Launching In
                   </h3>
-                  <div className="row justify-content-center g-3">
+                  <div className="row justify-content-center g-4">
                     {[
                       { value: timeLeft.days, label: "DAYS" },
                       { value: timeLeft.hours, label: "HOURS" },
@@ -258,16 +263,15 @@ const ComingSoon = () => {
                     ].map((item, index) => (
                       <div key={index} className="col-6 col-sm-3">
                         <div style={{ 
-                          background: "rgba(255, 255, 255, 0.05)",
-                          padding: "35px 20px",
+                          background: "rgba(255, 255, 255, 0)",
+                          padding: "40px 20px",
                           borderRadius: "20px",
-                          backdropFilter: "blur(10px)",
-                          boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)"
+                          boxShadow: "none"
                         }}>
                           <h3 style={{ 
-                            fontSize: "clamp(42px, 5vw, 64px)", 
+                            fontSize: "clamp(48px, 6vw, 72px)", 
                             fontWeight: "700", 
-                            background: "linear-gradient(135deg, #d4af37 0%, #f4e5a1 100%)",
+                            background: "linear-gradient(135deg, #d4af37 0%, #c9992e 100%)",
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent",
                             backgroundClip: "text",
@@ -277,8 +281,8 @@ const ComingSoon = () => {
                             {String(item.value).padStart(2, '0')}
                           </h3>
                           <p style={{ 
-                            fontSize: "12px", 
-                            color: "#b8b8b8", 
+                            fontSize: "13px", 
+                            color: "#999", 
                             margin: "0", 
                             letterSpacing: "2px", 
                             fontWeight: "600"
@@ -291,86 +295,86 @@ const ComingSoon = () => {
                   </div>
                 </div>
 
+                {/* Contact Form */}
                 <div className="mb-5" style={{ 
-                  maxWidth: "700px", 
+                  maxWidth: "750px", 
                   margin: "0 auto 50px",
                   animation: "fadeInUp 1s ease-out 0.9s both"
                 }}>
                   <div style={{
-                    background: "rgba(255, 255, 255, 0.08)",
-                    padding: "50px 40px",
-                    borderRadius: "25px",
-                    backdropFilter: "blur(20px)",
-                    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.4)"
+                    background: "rgba(255, 255, 255, 0)",
+                    padding: "60px 50px",
+                    borderRadius: "30px",
+                    boxShadow: "none"
                   }}>
-                    <div style={{ fontSize: "50px", marginBottom: "20px" }}></div>
+                    <div style={{ fontSize: "56px", marginBottom: "25px" }}></div>
                     <h4 style={{ 
-                      fontSize: "32px", 
+                      fontSize: "36px", 
                       marginBottom: "15px",
-                      color: "#fff",
+                      color: "#1a1a2e",
                       fontWeight: "700",
                       fontFamily: "'Playfair Display', serif"
                     }}>
-                      Reserve Your Exclusive Access
+                      Get In Touch
                     </h4>
                     <p style={{
-                      fontSize: "16px",
-                      color: "#d4af37",
-                      marginBottom: "35px",
-                      fontWeight: "500"
+                      fontSize: "17px",
+                      color: "#666",
+                      marginBottom: "40px",
+                      fontWeight: "400"
                     }}>
-                      Be among the first to explore our exquisite collection
+                      Be the first to explore our exclusive jewelry collection
                     </p>
                     <form onSubmit={handleSubmit}>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                         <input
                           type="text"
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          placeholder="Your Name"
+                          placeholder="Your Name *"
                           required
                           style={{
-                            padding: "18px 25px",
-                            border: "none",
+                            padding: "20px 25px",
+                            border: "2px solid #e8e8e8",
                             borderRadius: "12px",
-                            fontSize: "15px",
-                            background: "rgba(255, 255, 255, 0.1)",
-                            color: "#fff",
+                            fontSize: "16px",
+                            background: "#fafafa",
+                            color: "#333",
                             outline: "none",
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
-                            e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "#fff";
+                            e.target.style.borderColor = "#d4af37";
                           }}
                           onBlur={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
-                            e.target.style.boxShadow = "none";
+                            e.target.style.background = "#fafafa";
+                            e.target.style.borderColor = "#e8e8e8";
                           }}
                         />
                         <input
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          placeholder="Your Email Address"
+                          placeholder="Your Email Address *"
                           required
                           style={{
-                            padding: "18px 25px",
-                            border: "none",
+                            padding: "20px 25px",
+                            border: "2px solid #e8e8e8",
                             borderRadius: "12px",
-                            fontSize: "15px",
-                            background: "rgba(255, 255, 255, 0.1)",
-                            color: "#fff",
+                            fontSize: "16px",
+                            background: "#fafafa",
+                            color: "#333",
                             outline: "none",
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
-                            e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "#fff";
+                            e.target.style.borderColor = "#d4af37";
                           }}
                           onBlur={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
-                            e.target.style.boxShadow = "none";
+                            e.target.style.background = "#fafafa";
+                            e.target.style.borderColor = "#e8e8e8";
                           }}
                         />
                         <input
@@ -379,80 +383,75 @@ const ComingSoon = () => {
                           onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
                           placeholder="WhatsApp Number (Optional)"
                           style={{
-                            padding: "18px 25px",
-                            border: "none",
+                            padding: "20px 25px",
+                            border: "2px solid #e8e8e8",
                             borderRadius: "12px",
-                            fontSize: "15px",
-                            background: "rgba(255, 255, 255, 0.1)",
-                            color: "#fff",
+                            fontSize: "16px",
+                            background: "#fafafa",
+                            color: "#333",
                             outline: "none",
                             transition: "all 0.3s ease"
                           }}
                           onFocus={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.15)";
-                            e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.3)";
+                            e.target.style.background = "#fff";
+                            e.target.style.borderColor = "#d4af37";
                           }}
                           onBlur={(e) => {
-                            e.target.style.background = "rgba(255, 255, 255, 0.1)";
-                            e.target.style.boxShadow = "none";
+                            e.target.style.background = "#fafafa";
+                            e.target.style.borderColor = "#e8e8e8";
                           }}
                         />
                         <button
                           type="submit"
                           disabled={isSubmitting}
                           style={{
-                            padding: "20px 50px",
-                            background: isSubmitting ? "#888" : "linear-gradient(135deg, #d4af37 0%, #f4e5a1 100%)",
-                            color: "#1a1a2e",
+                            padding: "22px 50px",
+                            background: isSubmitting ? "#ccc" : "linear-gradient(135deg, #d4af37 0%, #c9992e 100%)",
+                            color: "#fff",
                             border: "none",
                             borderRadius: "12px",
-                            fontSize: "16px",
+                            fontSize: "17px",
                             fontWeight: "700",
                             cursor: isSubmitting ? "not-allowed" : "pointer",
                             transition: "all 0.3s ease",
                             textTransform: "uppercase",
                             letterSpacing: "2px",
-                            boxShadow: "0 10px 30px rgba(212, 175, 55, 0.4)"
+                            boxShadow: "none"
                           }}
                           onMouseEnter={(e) => {
                             if (!isSubmitting) {
                               e.target.style.transform = "translateY(-3px)";
-                              e.target.style.boxShadow = "0 15px 40px rgba(212, 175, 55, 0.6)";
+                              e.target.style.boxShadow = "0 15px 40px rgba(212, 175, 55, 0.5)";
                             }
                           }}
                           onMouseLeave={(e) => {
                             e.target.style.transform = "translateY(0)";
-                            e.target.style.boxShadow = "0 10px 30px rgba(212, 175, 55, 0.4)";
+                            e.target.style.boxShadow = "0 10px 30px rgba(212, 175, 55, 0.3)";
                           }}
                         >
-                          {isSubmitting ? "Sending..." : "Get VIP Access"}
+                          {isSubmitting ? "Sending..." : "Send Message"}
                         </button>
                       </div>
                       {isSubmitted && (
                         <div style={{
-                          marginTop: "20px",
+                          marginTop: "25px",
                           padding: "20px",
-                          background: "rgba(76, 175, 80, 0.2)",
+                          background: "#e8f5e9",
                           borderRadius: "12px",
-                          color: "#a5d6a7",
+                          color: "#2e7d32",
                           fontSize: "15px",
-                          fontWeight: "600",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "10px"
+                          fontWeight: "600"
                         }}>
-                          <span style={{ fontSize: "24px" }}></span>
-                          Thank you! You&apos;re on our exclusive VIP list.
+                           Thank you! We&apos;ll get back to you shortly.
                         </div>
                       )}
                       {errorMessage && (
                         <div style={{
-                          marginTop: "20px",
+                          marginTop: "25px",
                           padding: "20px",
-                          background: "rgba(244, 67, 54, 0.2)",
+                          background: "#ffebee",
                           borderRadius: "12px",
-                          color: "#ffcdd2",
+                          color: "#c62828",
                           fontSize: "14px"
                         }}>
                           {errorMessage}
@@ -460,85 +459,87 @@ const ComingSoon = () => {
                       )}
                     </form>
                     <p style={{
-                      marginTop: "20px",
-                      fontSize: "13px",
-                      color: "#999",
-                      fontStyle: "italic"
-                    }}>
-                      Your information is safe with us. We respect your privacy.
-                    </p>
-                    <p style={{
-                      marginTop: "15px",
+                      marginTop: "25px",
                       fontSize: "14px",
-                      color: "#d4af37"
+                      color: "#999"
                     }}>
-                      Or contact us directly:<br />
-                       support@techfieldsolution.com<br />
-                       info@techfieldsolution.com<br />
-                       +91 6290 218 436
+                      Or reach us directly at:
+                      <br />
+                      <a href="mailto:support@techfieldsolution.com" style={{ color: "#d4af37", fontWeight: "600", textDecoration: "none" }}>support@techfieldsolution.com</a>
+                      {' '} | {' '}
+                      <a href="tel:+916290218436" style={{ color: "#d4af37", fontWeight: "600", textDecoration: "none" }}>+91 6290 218 436</a>
                     </p>
                   </div>
                 </div>
 
-                <div className="row justify-content-center" style={{ gap: "20px" }} style={{ animation: "fadeInUp 1s ease-out 1.1s both" }}>
+                {/* Contact Cards */}
+                <div className="row justify-content-center g-4" style={{ animation: "fadeInUp 1s ease-out 1.1s both" }}>
                   
                   <div className="col-md-6">
                     <div style={{
-                      background: "rgba(255, 255, 255, 0.05)",
-                      margin: "10px",
-                      padding: "35px 30px",
-                      borderRadius: "20px",
-                      backdropFilter: "blur(10px)",
+                      background: "rgba(255, 255, 255, 0)",
+                      padding: "40px 35px",
+                      borderRadius: "25px",
+                      boxShadow: "none",
                       height: "100%",
                       textAlign: "left"
                     }}>
-                      <h5 style={{ 
-                        fontSize: "22px", 
-                        marginBottom: "25px", 
-                        color: "#d4af37",
-                        fontWeight: "700",
+                      <div style={{ 
+                        width: "70px",
+                        height: "70px",
+                        borderRadius: "50%",
+                        background: "linear-gradient(135deg, #d4af37 0%, #c9992e 100%)",
                         display: "flex",
                         alignItems: "center",
-                        gap: "10px"
+                        justifyContent: "center",
+                        marginBottom: "25px"
                       }}>
-                        <span style={{ fontSize: "28px" }}></span>
-                        Contact Us
+                        <span style={{ fontSize: "32px" }}></span>
+                      </div>
+                      <h5 style={{ 
+                        fontSize: "24px", 
+                        marginBottom: "20px", 
+                        color: "#1a1a2e",
+                        fontWeight: "700"
+                      }}>
+                        Contact Information
                       </h5>
                       <div>
                         <div style={{ marginBottom: "18px" }}>
-                          <p style={{ fontSize: "12px", color: "#999", marginBottom: "5px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Phone</p>
+                          <p style={{ fontSize: "13px", color: "#999", marginBottom: "8px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Phone</p>
                           <a href="tel:+916290218436" style={{ 
-                            color: "#f4e5a1", 
+                            color: "#1a1a2e", 
                             textDecoration: "none",
-                            fontSize: "18px",
+                            fontSize: "19px",
                             fontWeight: "600"
                           }}>
                             +91 6290 218 436
                           </a>
                         </div>
                         <div style={{ marginBottom: "18px" }}>
-                          <p style={{ fontSize: "12px", color: "#999", marginBottom: "5px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Email</p>
+                          <p style={{ fontSize: "13px", color: "#999", marginBottom: "8px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Email</p>
                           <a href="mailto:support@techfieldsolution.com" style={{ 
-                            color: "#f4e5a1", 
+                            color: "#1a1a2e", 
                             textDecoration: "none",
-                            fontSize: "15px",
+                            fontSize: "16px",
                             fontWeight: "600",
-                            display: "block"
+                            display: "block",
+                            marginBottom: "5px"
                           }}>
                             support@techfieldsolution.com
                           </a>
                           <a href="mailto:info@techfieldsolution.com" style={{ 
-                            color: "#f4e5a1", 
+                            color: "#1a1a2e", 
                             textDecoration: "none",
-                            fontSize: "15px",
+                            fontSize: "16px",
                             fontWeight: "600"
                           }}>
                             info@techfieldsolution.com
                           </a>
                         </div>
                         <div>
-                          <p style={{ fontSize: "12px", color: "#999", marginBottom: "5px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Location</p>
-                          <p style={{ color: "#b8b8b8", margin: "0", fontSize: "15px" }}>
+                          <p style={{ fontSize: "13px", color: "#999", marginBottom: "8px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px" }}>Location</p>
+                          <p style={{ color: "#666", margin: "0", fontSize: "16px", lineHeight: "1.6" }}>
                             Tech Avenue, Silicon Valley,<br />CA 94000 (Kolkata)
                           </p>
                         </div>
@@ -548,34 +549,29 @@ const ComingSoon = () => {
 
                   <div className="col-md-6">
                     <div style={{
-                      background: "rgba(255, 255, 255, 0.05)",
-                      margin: "10px",
-                      padding: "35px 30px",
-                      borderRadius: "20px",
-                      backdropFilter: "blur(10px)",
+                      background: "rgba(255, 255, 255, 0)",
+                      padding: "40px 35px",
+                      borderRadius: "25px",
+                      boxShadow: "none",
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "center"
+                      justifyContent: "center",
+                      textAlign: "center"
                     }}>
+                      <img src="/assets/img/icon/social.png" alt="Social" style={{ width: "70px", height: "70px", margin: "0 auto 25px" }} />
                       <h5 style={{ 
-                        fontSize: "22px", 
-                        marginBottom: "25px", 
-                        color: "#d4af37",
-                        fontWeight: "700",
-                        textAlign: "center",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "10px"
+                        fontSize: "24px", 
+                        marginBottom: "20px", 
+                        color: "#1a1a2e",
+                        fontWeight: "700"
                       }}>
-                        <span style={{ fontSize: "28px" }}></span>
                         Follow Our Journey
                       </h5>
                       <div style={{ display: "flex", justifyContent: "center", gap: "15px", flexWrap: "wrap" }}>
                         {[
                           { icon: "fab fa-facebook-f", bg: "#3b5998", url: "https://www.facebook.com/people/Tech-Field-Solution/61581618428487/" },
-                          { icon: "fab fa-twitter", bg: "#000", url: "https://x.com/techfieldsol" },
+                          { icon: "fab fa-twitter", bg: "#1DA1F2", url: "https://x.com/techfieldsol" },
                           { icon: "fab fa-linkedin-in", bg: "#0077b5", url: "https://www.linkedin.com/company/techfieldsolution/" },
                           { icon: "fab fa-instagram", bg: "#E4405F", url: "https://www.instagram.com/techfieldsolution" },
                           { icon: "fab fa-youtube", bg: "#ff0000", url: "https://www.youtube.com/@techfieldsolution" }
@@ -586,8 +582,8 @@ const ComingSoon = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{
-                              width: "55px",
-                              height: "55px",
+                              width: "60px",
+                              height: "60px",
                               borderRadius: "50%",
                               background: social.bg,
                               display: "flex",
@@ -595,18 +591,18 @@ const ComingSoon = () => {
                               justifyContent: "center",
                               transition: "all 0.3s ease",
                               textDecoration: "none",
-                              boxShadow: "0 5px 20px rgba(0, 0, 0, 0.3)"
+                              boxShadow: "none"
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = "translateY(-5px) scale(1.1)";
-                              e.currentTarget.style.boxShadow = "0 10px 30px rgba(212, 175, 55, 0.5)";
+                              e.currentTarget.style.transform = "translateY(-8px) scale(1.1)";
+                              e.currentTarget.style.boxShadow = "0 12px 35px rgba(0, 0, 0, 0.25)";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.transform = "translateY(0) scale(1)";
-                              e.currentTarget.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.3)";
+                              e.currentTarget.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.15)";
                             }}
                           >
-                            <i className={social.icon} style={{ color: "#fff", fontSize: "20px" }}></i>
+                            <i className={social.icon} style={{ color: "#fff", fontSize: "22px" }}></i>
                           </a>
                         ))}
                       </div>
@@ -625,19 +621,9 @@ const ComingSoon = () => {
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap');
         
-        @keyframes shimmer {
-          0% { background-position: 0 0; }
-          100% { background-position: 100px 100px; }
-        }
-
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-25px) rotate(5deg); }
         }
 
         @keyframes fadeIn {
@@ -648,7 +634,7 @@ const ComingSoon = () => {
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
           }
           to {
             opacity: 1;
@@ -659,7 +645,7 @@ const ComingSoon = () => {
         @keyframes fadeInDown {
           from {
             opacity: 0;
-            transform: translateY(-30px);
+            transform: translateY(-40px);
           }
           to {
             opacity: 1;
@@ -668,15 +654,15 @@ const ComingSoon = () => {
         }
 
         input::placeholder {
-          color: rgba(255, 255, 255, 0.5);
+          color: #999;
         }
 
         @media (max-width: 768px) {
           .col-sm-3 > div {
-            padding: 25px 15px !important;
+            padding: 30px 20px !important;
           }
           .col-sm-3 h3 {
-            font-size: 36px !important;
+            font-size: 42px !important;
           }
         }
       `}</style>
