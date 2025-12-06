@@ -140,16 +140,16 @@ const ComingSoon = () => {
                   <br />Into Reality
                 </h1>
 
-                <p className="hero-subtitle mb-5" style={{
-                  fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-                  lineHeight: '1.8',
-                  opacity: '0.95',
-                  maxWidth: '600px',
-                  fontWeight: '300'
-                }}>
-                  Partner with <strong style={{ fontWeight: '700', color: '#FFD700' }}>Tech Field Solution</strong> for 
-                  innovative web development, mobile apps, AI solutions, and digital marketing that drives measurable results.
-                </p>
+               <p className="hero-subtitle mb-5" style={{
+  fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+  lineHeight: '1.8',
+  color: 'rgba(255, 255, 255, 0.95)',
+  maxWidth: '600px',
+  fontWeight: '300'
+}}>
+  Partner with <strong style={{ fontWeight: '700', color: '#FFD700' }}>Tech Field Solution</strong> for 
+  innovative web development, mobile apps, AI solutions, and digital marketing that drives measurable results.
+</p>
 
                 {/* Key Benefits */}
                 <div className="benefits mb-5">
